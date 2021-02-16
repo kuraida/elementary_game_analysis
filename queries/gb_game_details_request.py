@@ -26,7 +26,7 @@ query_params = {
 games_details_df = pd.DataFrame(columns=[])
 
 query_idx = 0
-while query_idx < games_df.shape[0]
+while query_idx < games_df.shape[0]:
 
     #fetch details for 100 games, iterate idx
     query_params['offset'] = str(query_idx)
@@ -35,11 +35,12 @@ while query_idx < games_df.shape[0]
     guid_filter = 'guid:' + guid_filter.replace('\n', '|')
     query_params['filter'] = guid_filter
 
-    games_request = requests.get('https://giantbomb.com/api/games/', headers=headers, params=games_params)
+    games_request = requests.get('https://giantbomb.com/api/game/', headers=headers, params=games_params)
     
 
     time.sleep(18) #space out requests so as not to violate GiantBomb's rate limits
     query_idx += 100
+
 
 
 
