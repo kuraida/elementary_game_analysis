@@ -42,7 +42,7 @@ games_params = {
 }
 
 
-games_df = pd.DataFrame(columns=games_params['fields_list'].split(',')) #output dataframe
+games_df = pd.DataFrame(columns=games_params['field_list'].split(',')) #output dataframe
 
 idx = 0
 while idx <= n:
@@ -54,8 +54,8 @@ while idx <= n:
     
     idx += 100
     
-    print('current progress: index=' + idx + ' of ' + n + ' total')
-    time.sleep(18) #space out requests as to not violate GiantBomb's rate limits
+    print('current progress: index=' + str(idx) + ' of ' + str(n) + ' total')
+    time.sleep(20) #space out requests as to not violate GiantBomb's rate limits - minimum 18 seconds, 20 to be safe
 
 
 print(games_df)
