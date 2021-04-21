@@ -61,7 +61,7 @@ while idx <= n:
 print(games_df)
 print(games_df.shape)
 
-games_df.to_csv('./data/games.csv')
+games_df.to_csv('./data/games.csv', index=False)
     
 
 
