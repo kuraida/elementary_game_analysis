@@ -2,16 +2,5 @@ name: elementary_game_analysis
 channels:
   - defaults
 dependencies:
-  - ca-certificates=2021.4.13
-  - certifi=2020.12.5
-  - openssl=1.1.1k
-  - pip=21.0.1
-  - python=3.9.4
-  - setuptools=52.0.0
-  - sqlite=3.35.4
-  - tzdata=2020f
-  - vc=14.2
-  - vs2015_runtime=14.27.29016
-  - wheel=0.36.2
-  - wincertstore=0.2
+  - python=3.9
 prefix: C:\Users\Chris\local\miniconda3\envs\elementary_game_analysis
