@@ -23,6 +23,6 @@ genres_query_params = {
 genres_request = requests.get('https://www.giantbomb.com/api/genres/', headers=headers, params=genres_query_params)
 
 genres_df = pd.DataFrame(json.loads(genres_request.text)['results'])
-genres_df.to_csv('./data/genres.csv', index=False)
-print(genres_df.sort_values('name', ascending=True)[['guid', 'name', 'description']])
+#genres_df.to_csv('./data/genres.csv', index=False)
+print(genres_df.sort_values('name', ascending=True)[['id', 'guid', 'name', 'description']])
 
