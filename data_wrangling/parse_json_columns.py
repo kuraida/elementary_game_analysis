@@ -1,5 +1,6 @@
 import ast 
 import pandas as pd
+import numpy as np
 
 
 '''
@@ -25,11 +26,17 @@ def parse_json(in_df, fields):
         
         out_df = pd.DataFrame()
         for idx in in_df.index: #needs to be run for each record to capture all unique values for each field
-
+            
             item_list = []
             
+
+                
             json_string = in_df.loc[idx][field]
-            json_eval = ast.literal_eval(json_string) #returns json object as python dict
+            
+            try:
+                json_eval = ast.literal_eval(json_string) #returns json object as python dict
+            except:
+                continue
 
             #replace api references in source data with python list of unique ids,  append record dicts to output dataframe
             for item in json_eval:
@@ -40,7 +47,6 @@ def parse_json(in_df, fields):
 
        
         out_df.drop_duplicates().to_csv('./data/' + field + '.csv', index=False) #only export unique records
-        
 
     return in_df
 
@@ -50,8 +56,9 @@ def parse_json(in_df, fields):
 
 def main():
     
-    input_df = pd.read_csv('./data/game_details.csv')[:100]
-    field_list = ['genres']
-    parsed_df = parse_json(input_df, ['genres'])
+    df = pd.read_csv('./data/game_details.csv')
+    field_list = ['platforms', 'franchises', 'developers']
+    parsed_df = parse_json(df, field_list)
+    parsed_df.to_csv('./data/game_details_parsed.csv', index=False)
 
 main()
